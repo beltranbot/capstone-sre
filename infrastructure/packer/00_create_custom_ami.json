@@ -1,0 +1,61 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_region": "",
+    "node_env": "",
+    "app_port": "",
+    "db_dialect": "",
+    "db_host": "",
+    "db_password": "",
+    "db_username": "",
+    "db_database": "",
+    "db_port": "",
+    "jwt_key": "",
+    "tag": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{ user `aws_access_key` }}",
+      "secret_key": "{{ user `aws_secret_key` }}",
+      "region": "{{ user `aws_region` }}",
+      "source_ami_filter": {
+        "owners": ["amazon"],
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "amzn2-ami-hvm-2.*-x86_64-gp2",
+          "root-device-type": "ebs"
+        },
+        "most_recent": true
+      },
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ami_name": "{{ user `tag` }}-ami-{{ timestamp }}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "./scripts/00_set_up_environment_variables.sh",
+      "environment_vars": [
+        "NODE_ENV={{ user `node_env` }}",
+        "APP_PORT={{ user `app_port` }}",
+        "DB_DIALECT={{ user `db_dialect` }}",
+        "DB_HOST={{ user `db_host` }}",
+        "DB_PASSWORD={{ user `db_password` }}",
+        "DB_USERNAME={{ user `db_username` }}",
+        "DB_DATABASE={{ user `db_database` }}",
+        "DB_PORT={{ user `db_port` }}",
+        "JWT_KEY={{ user `jwt_key` }}"
+      ],
+      "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'"
+    },
+    {
+      "type": "shell",
+      "script": "./scripts/01_instance_user_data.sh",
+      "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'",
+      "pause_before": "10s"
+    }
+  ]
+}
