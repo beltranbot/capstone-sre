@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 exports.DATABASE = {
-  dialect: process.env.DB_DIALECT,
+  dialect: process.env.DB_DIALECT || "mysql",
   host: process.env.DB_HOST,
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
