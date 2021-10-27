@@ -38,9 +38,9 @@ jobs:
       matrix:
         python-version: [3.8]
         node-version: ['14.x']
-        appname: ['cbeltran-staging-app']
-        deploy-group: ['cbeltran-staging-dg']
-        s3-bucket: ['cbeltran-staging-bucket']
+        appname: ['cebeltran-staging-app']
+        deploy-group: ['cebeltran-staging-dg']
+        s3-bucket: ['cebeltran-staging-bucket']
         s3-filename: ['staging-aws-codedeploy-${{ github.sha }}']
 
     needs: buildAndTest

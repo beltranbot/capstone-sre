@@ -1,18 +1,18 @@
 {
   "variables": {
-    "aws_access_key": "",
-    "aws_secret_key": "",
-    "aws_region": "",
-    "node_env": "",
-    "app_port": "",
-    "db_dialect": "",
-    "db_host": "",
-    "db_password": "",
-    "db_username": "",
-    "db_database": "",
-    "db_port": "",
-    "jwt_key": "",
-    "tag": ""
+    "aws_access_key": "{{ env `aws_access_key`}}",
+    "aws_secret_key": "{{ env `aws_secret_key` }}",
+    "aws_region": "{{ env `aws_region` }}",
+    "node_env": "{{ env `node_env` }}",
+    "app_port": "{{ env `app_port` }}",
+    "db_dialect": "{{ env `db_dialect` }}",
+    "db_host": "{{ env `db_host` }}",
+    "db_password": "{{ env `db_password` }}",
+    "db_username": "{{ env `db_username` }}",
+    "db_database": "{{ env `db_database` }}",
+    "db_port": "{{ env `db_port` }}",
+    "jwt_key": "{{ env `jwt_key` }}",
+    "tag": "{{ env `tag` }}"
   },
   "builders": [
     {

@@ -38,9 +38,9 @@ jobs:
       matrix:
         python-version: [3.8]
         node-version: ['14.x']
-        appname: ['cbeltran-production-app']
-        deploy-group: ['cbeltran-production-dg']
-        s3-bucket: ['cbeltran-production-bucket']
+        appname: ['cebeltran-production-app']
+        deploy-group: ['cebeltran-production-dg']
+        s3-bucket: ['cebeltran-production-bucket']
         s3-filename: ['production-aws-codedeploy-${{ github.sha }}']
 
     needs: buildAndTest

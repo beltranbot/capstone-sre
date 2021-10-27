@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# load environment variables
+set -a; source /etc/environment; set +a;
+
 ### install codedeploy agent
 sudo yum update -y
 sudo yum install ruby -y
