@@ -11,6 +11,10 @@ permissions:
       - directory
       - file
 hooks:
+  ApplicationStop:
+    - location: scripts/stop-pm2.sh
+      timeout: 300
+      runas: ec2-user
   ApplicationStart:
     - location: scripts/reload-pm2.sh
       timeout: 300
