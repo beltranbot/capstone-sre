@@ -24,7 +24,7 @@ resource "aws_lb" "load_balancer" {
 }
 
 resource "aws_lb_target_group" "target_group" {
-  name       = "${var.TAG_PREFIX}-target-group"
+  name       = "${var.TAG_PREFIX}-tg"
   depends_on = [aws_vpc.main_vpc]
   port       = var.APP_PORT
   protocol   = "HTTP"
