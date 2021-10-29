@@ -1,4 +1,4 @@
 exports.getHome = (req, res, next) => {
-  res.send('OK');
+  res.send('OK sre!');
   next();
 };
