@@ -13,7 +13,7 @@ describe('homeController.getHome', function () {
     };
     const resMock = sinon.mock(res);
     const nextMock = sinon.mock(next);
-    resMock.expects('send').once().withArgs("OK");
+    resMock.expects('send').once().withArgs("OK sre!");
     nextMock.expects("next").once().withArgs();
     homeController.getHome(null, res, next.next)
     resMock.verify();
